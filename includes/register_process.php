@@ -9,6 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm_password'];
 
+    $_SESSION['form_data'] = [
+        'username' => $username,
+        'email' => $email,
+    ];
+
     //Ketika password tidak sama
     if ($password !== $confirmPassword) {
         $_SESSION['error'] = "Konfirmasi password tidak cocok.";

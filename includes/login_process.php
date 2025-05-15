@@ -5,6 +5,10 @@ require_once 'config.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $inputPassword = $_POST["password"];
+    
+    $_SESSION['form_data'] = [
+        'username' => $username
+    ];
 
     # cek apakah username ada
     $stmt = $conn->prepare("SELECT id, username, password, role FROM users WHERE username=?");
@@ -42,11 +46,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $stmt->close();
-    // buat perilaku ketika salah username atau password
-    // buat perilaku ketika username tidak ditemukan
-    // buat perilaku ketika password salah
-    // buat perilaku ketika login berhasil
-    // buat perilaku ketika login gagal
-    // buat perilaku ketika login berhasil  
 }
 ?> 
