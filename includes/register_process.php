@@ -30,9 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $checkUsername->close();
 
+    //Password Hashed
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
     $insertUser = $conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
     $role = 'user';
-    $insertUser->bind_param("ssss", $username, $email, $password, $role);
+    $insertUser->bind_param("ssss", $username, $email, $hashedPassword, $role);
 
     //Ketika register berhasil
     if ($insertUser->execute()) {
