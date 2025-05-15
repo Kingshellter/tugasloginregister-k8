@@ -67,12 +67,12 @@ $role = $_SESSION['role'];
         <div class="form-container dashboard-container">
             <h2>Selamat Datang</h2>
             <div class="welcome-message">
-                <p>Halo, ?????</p>
-                <p>Role: ?????</p>
+                <p>Halo, <?php echo htmlspecialchars($username); ?></p>
+                <p>Role: <?php echo htmlspecialchars($role); ?></p>
                 <p>Anda telah berhasil login ke sistem.</p>
             </div>
 
-            <?php if ($isAdmin): ?>
+            <?php if ($role == 'admin'): ?>
             <div class="admin-panel">
                 <h3>Admin Panel</h3>
                 <a href="#" class="admin-btn">Kelola User</a>
