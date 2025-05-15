@@ -13,11 +13,11 @@
             <?php
             session_start();
             if (isset($_SESSION['error'])) {
-                echo '<div class="error-message">' . $_SESSION['error'] . '</div>';
+                echo '<div class="error-message" id="alert-message">' . $_SESSION['error'] . '</div>';
                 unset($_SESSION['error']);
             }
             if (isset($_SESSION['success'])) {
-                echo '<div class="success-message">' . $_SESSION['success'] . '</div>';
+                echo '<div class="success-message" id="alert-message">' . $_SESSION['success'] . '</div>';
                 unset($_SESSION['success']);
             }
             ?>
@@ -35,5 +35,17 @@
             <p class="register-link">Belum punya akun? <a href="">Daftar di sini</a></p>
         </div>
     </div>
+
+    <script>
+    const alert = document.getElementById("alert-message");
+
+    if (alert) {
+        setTimeout(() => {
+        alert.style.opacity = "0";
+        setTimeout(() => alert.remove(), 500);
+        }, 2000);
+    }
+    </script>
+
 </body>
 </html> 
