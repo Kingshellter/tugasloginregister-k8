@@ -14,5 +14,5 @@ CREATE table users (
 
 -- Insert admin default
 INSERT INTO users (username, email, password, role) VALUES ('tes','tes@uns.com','tes123','admin')
-
+INSERT INTO users (username, email, password, role) VALUES ('iniadmin','admin@uns.com','admin123','admin')
 
