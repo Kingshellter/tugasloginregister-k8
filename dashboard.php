@@ -2,52 +2,7 @@
 session_start();
 
 // Cek apakah user sudah login
-$host = 'localhost';     // Host database
-$db = 'database_k8';   // Ganti dengan nama database kamu
-$user = 'root';          // Username database
-$pass = '';              // Password database
 
-// Koneksi ke database
-$conn = new mysqli($host, $user, $pass, $db);
-
-// Cek koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
-
-// Cek apakah form login sudah dikirim
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Mencegah SQL Injection
-    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // Cek apakah user ditemukan
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-
-        // Verifikasi password
-        if (password_verify($password, $user['password'])) {
-            // Login berhasil, simpan data ke session
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            echo "Login berhasil. Selamat datang, " . $user['username'];
-        } else {
-            echo "Password salah.";
-        }
-    } else {
-        echo "Username tidak ditemukan.";
-    }
-
-    $stmt->close();
-}
-
-$conn->close();
 // Cek role user
 
 ?>
