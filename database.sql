@@ -8,10 +8,11 @@ CREATE table users (
     username VARCHAR(100),
     email VARCHAR(100),
     password VARCHAR(100),
-    role ENUM('admin','user') default 'user';
-    created_at TIMESTAMP default CURRENT_TIMESTAMP;
+    role ENUM('admin','user') default 'user',
+    created_at TIMESTAMP default CURRENT_TIMESTAMP
 );
 
+-- Insert admin default
 INSERT INTO users (username, email, password, role) VALUES ('tes','tes@uns.com','tes123','admin')
 
--- Insert admin default
+
