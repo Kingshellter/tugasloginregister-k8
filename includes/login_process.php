@@ -35,6 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $dbUsername;
             $_SESSION['role'] = $role;
             $_SESSION['success'] = "Login berhasil!! Selamat Datang $dbUsername!";
+
+            if ($_SESSION['role'] == 'admin') {
+                header('Location: ../admin_dashboard.php');
+                exit();
+            }
             header("Location: ../dashboard.php");
             exit();
         } else {

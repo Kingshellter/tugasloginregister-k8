@@ -70,7 +70,7 @@ $role = $_SESSION['role'];
 <body>
     <div class="container">
         <div class="form-container dashboard-container">
-            <h2>Selamat Datang</h2>
+            <h2>Selamat Datang ADMIN</h2>
             <div class="welcome-message">
                 <p>Halo, <?php echo htmlspecialchars($username); ?></p>
                 <p>Anda telah berhasil login ke sistem.</p>
