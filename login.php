@@ -11,6 +11,11 @@
         <div class="form-container">
             <h2>Login</h2>
             <?php
+            session_set_cookie_params([
+                'httponly' => true,
+                'secure' => false, 
+                'samesite' => 'Strict'
+            ]);
             session_start(); 
             if (isset($_SESSION['error'])) {
                 echo '<div class="error-message" id="alert-message">' . $_SESSION['error'] . '</div>';
