@@ -33,21 +33,21 @@
             <form action="includes/register_process.php" method="POST">
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required
+                    <input type="text" id="username" name="username"
                         value="<?= htmlspecialchars($old['username'] ?? '') ?>" />
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required
+                    <input type="email" id="email" name="email"
                         value="<?= htmlspecialchars($old['email'] ?? '') ?>" />
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required />
+                    <input type="password" id="password" name="password" />
                 </div>
                 <div class="form-group">
                     <label for="confirm_password">Konfirmasi Password:</label>
-                    <input type="password" id="confirm_password" name="confirm_password" required />
+                    <input type="password" id="confirm_password" name="confirm_password" />
                 </div>
                 <button type="submit" class="btn">Daftar</button>
             </form>

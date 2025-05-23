@@ -26,6 +26,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
+     // Validasi username: minimal 4 karakter, hanya alfanumerik + underscore
+    if (strlen($username) < 4) {
+        $_SESSION['error'] = "Username minimal 4 karakter.";
+        header("Location: ../register.php");
+        exit();
+    }
+    if (!preg_match('/^\w+$/', $username)) {
+        $_SESSION['error'] = "Username hanya boleh berisi huruf, angka, dan underscore.";
+        header("Location: ../register.php");
+        exit();
+    }
+
+    // Validasi email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = "Format email tidak valid.";
+        header("Location: ../register.php");
+        exit();
+    }
+
+    // Validasi password minimal 6 karakter
+    if (strlen($password) < 6) {
+        $_SESSION['error'] = "Password minimal 6 karakter.";
+        header("Location: ../register.php");
+        exit();
+    }
+
+    // Konfirmasi password harus sama
+    if ($password !== $confirmPassword) {
+        $_SESSION['error'] = "Konfirmasi password tidak cocok.";
+        header("Location: ../register.php");
+        exit();
+    }
+
     $checkUsername = $conn->prepare("SELECT id FROM users WHERE username = ?");
     $checkUsername->bind_param("s", $username);
     $checkUsername->execute();
